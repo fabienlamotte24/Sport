@@ -1,0 +1,131 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Serie
+ *
+ * @ORM\Table(name="serie")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SerieRepository")
+ */
+class Serie
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbRepetitions", type="integer")
+     */
+    private $nbRepetitions;
+
+    /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="dateSeance", type="datetime", nullable=true)
+     */
+    private $dateSeance;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Activites", inversedBy="activite")
+     * @ORM\JoinColumn(name="activite_id", referencedColumnName="id")
+     */
+    private $activitesId;
+
+    // php bin/console doctrine:generate:entities AppBundle:Serie
+
+    public function __construct(){
+        $dateSeance = new \DateTime();
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nbRepetitions
+     *
+     * @param integer $nbRepetitions
+     *
+     * @return Serie
+     */
+    public function setNbRepetitions($nbRepetitions)
+    {
+        $this->nbRepetitions = $nbRepetitions;
+
+        return $this;
+    }
+
+    /**
+     * Get nbRepetitions
+     *
+     * @return int
+     */
+    public function getNbRepetitions()
+    {
+        return $this->nbRepetitions;
+    }
+
+    /**
+     * Set activitesId
+     *
+     * @param \AppBundle\Entity\Activites $activitesId
+     *
+     * @return Serie
+     */
+    public function setActivitesId(\AppBundle\Entity\Activites $activitesId = null)
+    {
+        $this->activitesId = $activitesId;
+
+        return $this;
+    }
+
+    /**
+     * Get activitesId
+     *
+     * @return \AppBundle\Entity\Activites
+     */
+    public function getActivitesId()
+    {
+        return $this->activitesId;
+    }
+
+    /**
+     * Set dateSeance
+     *
+     * @param \DateTime $dateSeance
+     *
+     * @return Serie
+     */
+    public function setDateSeance($dateSeance)
+    {
+        $this->dateSeance = $dateSeance;
+
+        return $this;
+    }
+
+    /**
+     * Get dateSeance
+     *
+     * @return \DateTime
+     */
+    public function getDateSeance()
+    {
+        return $this->dateSeance;
+    }
+}
