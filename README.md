@@ -13,7 +13,7 @@ Voici ce que je prévois pour:
   - Enregistrer les objectifs de la méthode Lafay.
   - Créer des paliers de progression selon la méthode Lafay, et afficher le statut de ma progression
   
- 3) La V3(Troisième version):
+ 3) La V3 (Troisième version):
  
   - Inclure connexion / inscription d'utilisateur pour en faire profiter les potos avec qui je fais du sport
 
