@@ -5,6 +5,8 @@
         header{border-bottom: 1px solid black;}
         nav{background-color:grey;}
         link:hover{color:yellow;}
+        .info-serie{cursor:pointer; font-size:12px; color:#3386ff;margin:5px 0 0 0;}
+        .info-serie:hover{color:#61a0fc;}
     </style>
 {% endblock %}
 
@@ -38,25 +40,43 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="ajoutSerieLabel">Enregistrer une série</h5>
                 </div>
-                <div class="modal-body">
-                    {{ form_start(form, {'action': path('enregistrer_serie'), 'method': 'POST'}) }}
+                {{ form_start(form, {'action': path('enregistrer_serie'), 'method': 'POST'}) }}
+                    <div class="modal-body">
                         {# champs nombre de répétitions #}
-                        <div>
-                            {{ form_label(form.nbRepetitions) }}
-                            {{ form_widget(form.nbRepetitions) }}
-                        </div>
-                        <div>
-                            {{ form_label(form.activitesId) }}
-                            {{ form_widget(form.activitesId) }}
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <input type="submit" class="btn btn-primary" value="Ajouter série" />
-               </div>
+                        <fieldset class="border border-dark p-2">
+                            <div>
+                                {{ form_label(form.activitesId) }}
+                                {{ form_widget(form.activitesId, {'attr': {'class': 'activiteId'}}) }}
+                            </div>
+                            <div>
+                                {{ form_label(form.nbRepetitions) }}
+                                {{ form_widget(form.nbRepetitions, {'attr': {'class': 'rep'}}) }}
+                            </div>
+                        </fieldset>
+                        {# Cette ligne n'est pas encore fonctionnelle !! #}
+                        <p class="info-serie"><span class="fas fa-plus-circle"></span>Ajouter nouvelle serie</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <input type="submit" class="btn btn-primary" id="submit_serie" value="Enregistrer séance" />
+                    </div>
                 {{ form_end(form) }}
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+
+            $('#submit_serie').prop('disabled', true);
+            $('.rep').keyup(function(){
+                if($(this).val() != ''){
+                    $('#submit_serie').prop('disabled', false);
+                }
+            });
+        }); 
+    </script>
 {% endblock %}
 

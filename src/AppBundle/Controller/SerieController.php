@@ -15,8 +15,10 @@ use AppBundle\Form\SerieType;
 /**
  * //////////////////////
  * 
+ * ///////// ACTIONS
  * indexAction                      ( homepage )
  * enregistrerSerieAction           ( enregistrer_serie )
+ * ajaxSubmitAction                 ( ajax_submit )
  * 
  * //////////////////////
  */
@@ -51,5 +53,12 @@ class SerieController extends Controller
             $em->flush();
             return $this->redirectToRoute('homepage');
         }
+    }
+
+    /**
+     * @Route("/ajax-submit", name="ajax_submit", options={"expose"=true})
+     */
+    public function ajaxSubmitAction(Request $request){
+
     }
 }

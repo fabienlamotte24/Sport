@@ -23,12 +23,12 @@ class SerieType extends AbstractType
     {
         $builder
             ->add('nbRepetitions', IntegerType::class, array(
-                'label' => 'Nombre de répétitions de votre activité',
+                'label' => 'Nombre répétition',
                 'required' => true
             ))
             ->add('activitesId', EntityType::class, array(
                 'class' => Activites::class,
-                'label' => 'Séléctionnez une activité',
+                'label' => 'Activité:',
                 'choice_label' => 'activite',
                 'choice_value' => 'id'
             ));
