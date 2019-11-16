@@ -16,3 +16,6 @@ Voici ce que je prévois pour:
  3) La V3(Troisième version):
  
   - Inclure connexion / inscription d'utilisateur pour en faire profiter les potos avec qui je fais du sport
+
+Progression actuelle:
+ => V1
